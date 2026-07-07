@@ -42,14 +42,15 @@ export default function Hero({
         {/* Split: speaker image + registration card */}
         <div className="mt-10 grid items-start gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <div>
-            <div className="overflow-hidden rounded-[24px] bg-canvas">
+            <div className="overflow-hidden rounded-[24px]">
               <Image
                 src={general.heroImageUrl}
                 alt={`${general.speakerName} — ${general.speakerTitle}`}
                 width={720}
-                height={560}
+                height={720}
                 priority
-                className="h-full w-full object-cover"
+                unoptimized
+                className="h-auto w-full object-contain"
               />
             </div>
             <p className="mt-3 text-center text-sm font-semibold text-body">
