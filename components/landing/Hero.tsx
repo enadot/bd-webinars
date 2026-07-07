@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { WebinarConfig } from "@/lib/config";
 import RegistrationForm from "./RegistrationForm";
 import HeroTitle from "./HeroTitle";
+import HeroSubtitle from "./HeroSubtitle";
 
 function EventDetail({
   icon,
@@ -68,9 +69,7 @@ export default function Hero({
         {/* Headline block — centered, heavy display */}
         <div className="mx-auto max-w-3xl text-center">
           <HeroTitle text={general.title} />
-          <p className="mx-auto mt-6 max-w-2xl font-heading text-2xl leading-snug text-ink sm:text-3xl">
-            {general.subtitle}
-          </p>
+          <HeroSubtitle text={general.subtitle} />
         </div>
 
         {/* Event details — large, iconed, animated */}

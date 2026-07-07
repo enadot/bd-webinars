@@ -90,6 +90,60 @@ details.faq-item summary::-webkit-details-marker {
   display: none;
 }
 
+/* Subtitle: lime highlighter sweeping in behind the key phrase (RTL: from the right) */
+.subtitle-highlight {
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-primary),
+    var(--color-primary)
+  );
+  background-repeat: no-repeat;
+  background-position: 100% 72%;
+  background-size: 0% 48%;
+  padding-inline: 0.12em;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  animation: highlight-sweep 0.7s ease-out 1s forwards;
+}
+
+@keyframes highlight-sweep {
+  to {
+    background-size: 100% 48%;
+  }
+}
+
+/* Subtitle punch: heavier face + self-drawing squiggle underline */
+.subtitle-punch {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  padding-bottom: 0.28em;
+}
+
+.subtitle-punch .squiggle {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0.3em;
+  overflow: visible;
+}
+
+.subtitle-punch .squiggle path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: squiggle-draw 0.7s ease-out 1.7s forwards;
+}
+
+@keyframes squiggle-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Hero title: character-by-character reveal */
 .char-reveal {
   display: inline-block;
@@ -193,5 +247,13 @@ details.faq-item summary::-webkit-details-marker {
     opacity: 1;
     transform: none;
     filter: none;
+  }
+  .subtitle-highlight {
+    animation: none;
+    background-size: 100% 48%;
+  }
+  .subtitle-punch .squiggle path {
+    animation: none;
+    stroke-dashoffset: 0;
   }
 }
