@@ -6,7 +6,6 @@ import { Form } from "@base-ui/react/form";
 import { Field } from "@base-ui/react/field";
 import type { WebinarConfig } from "@/lib/config";
 import { readStoredAttribution } from "@/lib/tracking";
-import Reveal from "./Reveal";
 
 declare global {
   interface Window {
@@ -25,7 +24,7 @@ function fireConversionEvents() {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-brand-primary/20 bg-white px-4 py-3.5 text-base text-brand-ink placeholder:text-brand-ink/40 focus:border-brand-accent focus:outline focus:outline-2 focus:outline-brand-accent/40 data-[invalid]:border-red-500";
+  "w-full rounded-xl border border-ink/25 bg-canvas px-4 py-3 text-base text-ink placeholder:text-mute focus:border-ink focus:outline focus:outline-2 focus:outline-primary/50 data-[invalid]:border-negative";
 
 export default function RegistrationForm({
   config,
@@ -96,13 +95,9 @@ export default function RegistrationForm({
 
   if (closed) {
     return (
-      <div className="rounded-2xl border border-brand-accent/40 bg-white p-8 text-center shadow-xl">
-        <h3 className="text-2xl font-bold text-brand-primary">
-          כל המקומות נתפסו — ההרשמה נסגרה
-        </h3>
-        <p className="mt-3 text-brand-ink/75">
-          עקבו אחרינו לעדכונים על מועדים נוספים.
-        </p>
+      <div className="rounded-[24px] border border-ink/15 bg-canvas p-7 text-center">
+        <h3 className="text-2xl font-black text-ink">כל המקומות נתפסו</h3>
+        <p className="mt-2 text-body">ההרשמה נסגרה. עקבו אחרינו למועדים נוספים.</p>
       </div>
     );
   }
@@ -113,80 +108,96 @@ export default function RegistrationForm({
     <Form
       errors={errors}
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-brand-primary/10 bg-white p-6 shadow-xl shadow-brand-primary/10 sm:p-8"
+      className="overflow-hidden rounded-[24px] border border-ink bg-canvas"
     >
-      <div className="flex flex-col gap-5">
-        <Field.Root name="full_name">
-          <Field.Label className="mb-1.5 block font-semibold text-brand-primary">
-            {labels.fullName}
-          </Field.Label>
-          <Field.Control
-            type="text"
-            required
-            minLength={2}
-            autoComplete="name"
-            placeholder="ישראל ישראלי"
-            className={inputClass}
-          />
-          <Field.Error className="mt-1.5 block text-sm font-medium text-red-600" />
-        </Field.Root>
+      {/* Polarity-flipped banner — ink fill, lime text (the Wise signature) */}
+      <div className="flex items-center justify-center gap-2 bg-ink px-5 py-3 text-center text-sm font-bold text-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" className="h-4 w-4" aria-hidden="true">
+          <rect x="3" y="6" width="13" height="12" rx="2" />
+          <path d="M16 10.5 21 8v8l-5-2.5" />
+        </svg>
+        לצפייה לזמן מוגבל בלבד
+      </div>
 
-        <Field.Root name="phone">
-          <Field.Label className="mb-1.5 block font-semibold text-brand-primary">
-            {labels.phone}
-          </Field.Label>
-          <Field.Control
-            type="tel"
-            required
-            autoComplete="tel"
-            inputMode="tel"
-            placeholder="050-0000000"
-            dir="ltr"
-            className={`${inputClass} text-end`}
-          />
-          <Field.Error className="mt-1.5 block text-sm font-medium text-red-600" />
-        </Field.Root>
+      <div className="p-6">
+        <div className="mb-4 flex items-center justify-between rounded-xl bg-canvas-soft px-4 py-2.5">
+          <span className="text-sm font-bold text-ink">{config.general.eventDateHebrew}</span>
+          <span className="text-sm font-bold text-ink" dir="ltr">{config.general.eventTimeDisplay}</span>
+        </div>
 
-        <Field.Root name="email">
-          <Field.Label className="mb-1.5 block font-semibold text-brand-primary">
-            {labels.email}
-          </Field.Label>
-          <Field.Control
-            type="email"
-            required
-            autoComplete="email"
-            inputMode="email"
-            placeholder="name@email.com"
-            dir="ltr"
-            className={`${inputClass} text-end`}
-          />
-          <Field.Error className="mt-1.5 block text-sm font-medium text-red-600" />
-        </Field.Root>
+        <div className="flex flex-col gap-3.5">
+          <Field.Root name="full_name">
+            <Field.Label className="mb-1 block text-sm font-semibold text-ink">
+              {labels.fullName}
+            </Field.Label>
+            <Field.Control
+              type="text"
+              required
+              minLength={2}
+              autoComplete="name"
+              placeholder="ישראל ישראלי"
+              className={inputClass}
+            />
+            <Field.Error className="mt-1 block text-sm font-semibold text-negative" />
+          </Field.Root>
 
-        {generalError ? (
-          <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
-            {generalError}
-          </p>
-        ) : null}
+          <Field.Root name="email">
+            <Field.Label className="mb-1 block text-sm font-semibold text-ink">
+              {labels.email}
+            </Field.Label>
+            <Field.Control
+              type="email"
+              required
+              autoComplete="email"
+              inputMode="email"
+              placeholder="name@email.com"
+              dir="ltr"
+              className={`${inputClass} text-end`}
+            />
+            <Field.Error className="mt-1 block text-sm font-semibold text-negative" />
+          </Field.Root>
 
-        <button
-          type="submit"
-          disabled={submitting}
-          className="mt-1 w-full rounded-xl bg-brand-accent px-8 py-4 text-lg font-bold text-brand-deep shadow-lg shadow-brand-accent/30 transition hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary disabled:cursor-not-allowed disabled:opacity-60"
-        >
-          {submitting ? "רק רגע..." : config.general.ctaForm}
-        </button>
+          <Field.Root name="phone">
+            <Field.Label className="mb-1 block text-sm font-semibold text-ink">
+              {labels.phone}
+            </Field.Label>
+            <Field.Control
+              type="tel"
+              required
+              autoComplete="tel"
+              inputMode="tel"
+              placeholder="050-0000000"
+              dir="ltr"
+              className={`${inputClass} text-end`}
+            />
+            <Field.Error className="mt-1 block text-sm font-semibold text-negative" />
+          </Field.Root>
 
-        <ul className="flex flex-col items-center gap-1.5 text-sm text-brand-ink/65 sm:flex-row sm:justify-center sm:gap-5">
-          {config.form.microcopy.map((line) => (
-            <li key={line} className="flex items-center gap-1.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-3.5 w-3.5 text-brand-accent" aria-hidden="true">
-                <path d="m5 13 4 4L19 7" />
-              </svg>
-              {line}
-            </li>
-          ))}
-        </ul>
+          {generalError ? (
+            <p role="alert" className="rounded-xl bg-negative-bg px-4 py-3 text-sm font-semibold text-white">
+              {generalError}
+            </p>
+          ) : null}
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="mt-1 w-full rounded-[24px] bg-primary px-8 py-3.5 text-base font-bold text-ink-deep transition hover:bg-primary-active focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {submitting ? "רק רגע..." : config.general.ctaForm}
+          </button>
+
+          <ul className="mt-1 flex flex-col gap-1.5 text-sm text-mute">
+            {config.form.microcopy.map((line) => (
+              <li key={line} className="flex items-center gap-2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-3.5 w-3.5 text-positive" aria-hidden="true">
+                  <path d="m5 13 4 4L19 7" />
+                </svg>
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Form>
   );

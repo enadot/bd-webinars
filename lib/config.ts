@@ -159,16 +159,18 @@ export const DEFAULT_CONFIG: WebinarConfig = {
     showCalendarButtons: true,
   },
   design: {
-    primaryColor: "#0B3B66",
-    secondaryColor: "#123C69",
-    accentColor: "#D4AF37",
+    // Wise palette: primary = lime CTA, secondary = sage canvas, accent = ink text.
+    primaryColor: "#9fe870",
+    secondaryColor: "#e8ebe6",
+    accentColor: "#0e0f0c",
     logoUrl: "",
+    // Focused page by default — heavy sections off; admin can re-enable.
     sections: {
-      pain: true,
-      solution: true,
-      about: true,
+      pain: false,
+      solution: false,
+      about: false,
       learn: true,
-      details: true,
+      details: false,
       socialProof: true,
       faq: true,
       finalCta: true,
