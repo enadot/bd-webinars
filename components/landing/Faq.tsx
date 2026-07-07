@@ -14,7 +14,7 @@ export default function Faq({ config }: { config: WebinarConfig }) {
           <SectionHeading id="faq-title" title={faqTitle} />
         </Reveal>
         <Reveal delayMs={100}>
-          <Accordion.Root className="flex flex-col gap-3">
+          <Accordion.Root dir="rtl" className="flex flex-col gap-3 text-start">
             {faq.map((item) => (
               <Accordion.Item
                 key={item.q}
@@ -36,7 +36,9 @@ export default function Faq({ config }: { config: WebinarConfig }) {
                   </Accordion.Trigger>
                 </Accordion.Header>
                 <Accordion.Panel className="h-[var(--accordion-panel-height)] overflow-hidden transition-[height] duration-300 ease-out data-[ending-style]:h-0 data-[starting-style]:h-0 motion-reduce:transition-none">
-                  <p className="px-5 pb-5 leading-relaxed text-brand-ink/80">{item.a}</p>
+                  <p className="px-5 pb-6 text-start text-lg leading-relaxed text-brand-ink/85 sm:text-xl">
+                    {item.a}
+                  </p>
                 </Accordion.Panel>
               </Accordion.Item>
             ))}
