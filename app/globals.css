@@ -90,6 +90,85 @@ details.faq-item summary::-webkit-details-marker {
   display: none;
 }
 
+/* Hero title: character-by-character reveal */
+.char-reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.35em) rotate(4deg);
+  filter: blur(4px);
+  animation: char-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes char-in {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+/* --- Event-detail icon animations --- */
+
+/* Calendar: gentle bob */
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.anim-bob {
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+/* Clock: the whole badge ticks side to side like a pendulum */
+@keyframes tick {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+.anim-tick {
+  animation: tick 2s ease-in-out infinite;
+}
+
+/* Live: breathing pulse on the badge + waves fading in sequence */
+@keyframes live-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-primary) 70%, transparent);
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+.anim-live {
+  animation: live-pulse 1.8s ease-out infinite;
+}
+
+@keyframes wave-fade {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.anim-live .live-wave {
+  animation: wave-fade 1.8s ease-in-out infinite;
+}
+.anim-live .live-wave-outer {
+  animation: wave-fade 1.8s ease-in-out 0.35s infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -101,5 +180,18 @@ details.faq-item summary::-webkit-details-marker {
   }
   .premium-card {
     transition: none;
+  }
+  .anim-bob,
+  .anim-tick,
+  .anim-live,
+  .anim-live .live-wave,
+  .anim-live .live-wave-outer {
+    animation: none;
+  }
+  .char-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 }

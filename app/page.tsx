@@ -27,9 +27,18 @@ export default async function LandingPage() {
       {/* Slim nav */}
       <nav className="sticky top-0 z-20 border-b border-ink/5 bg-canvas/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3 sm:px-8">
-          <span className="font-display text-xl tracking-tight text-ink">
-            {config.general.title}
-          </span>
+          {config.design.logoUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={config.design.logoUrl}
+              alt={config.general.speakerName}
+              className="h-11 w-auto sm:h-12"
+            />
+          ) : (
+            <span className="font-display text-xl tracking-tight text-ink">
+              {config.general.title}
+            </span>
+          )}
           <a
             href="#register"
             className="rounded-[24px] bg-primary px-5 py-2 text-sm font-bold text-ink-deep transition hover:bg-primary-active"

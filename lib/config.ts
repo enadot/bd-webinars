@@ -119,7 +119,7 @@ export const DEFAULT_CONFIG: WebinarConfig = {
     eventTimeDisplay: "21:00",
     durationMinutes: 90,
     durationDisplay: "כשעה וחצי",
-    location: "Live בזום",
+    location: "שידור חי בזום",
     zoomLink: "",
     registrationLimit: 0,
     ctaPrimary: "הרשמה ללא עלות",
@@ -164,7 +164,7 @@ export const DEFAULT_CONFIG: WebinarConfig = {
     primaryColor: "#9fe870",
     secondaryColor: "#e8ebe6",
     accentColor: "#0e0f0c",
-    logoUrl: "",
+    logoUrl: "https://mosheedri.co.il/wp-content/uploads/2026/06/logo.webp",
     // Focused page by default — heavy sections off; admin can re-enable.
     sections: {
       pain: false,
