@@ -112,7 +112,8 @@ export const DEFAULT_CONFIG: WebinarConfig = {
     speakerTitle: "מומחה למימון ואשראי",
     speakerBio:
       "משה אדרי מלווה משפחות ובעלי עסקים בישראל בדרך לאישור מימון — גם אחרי סירובים חוזרים מהבנקים. בשיטה סדורה של שיפור פרופיל האשראי, בניית אסטרטגיית מימון ועבודה נכונה מול הגופים הפיננסיים, מאות לקוחות הגיעו מדחייה אחר דחייה ועד לדירה להשקעה.",
-    heroImageUrl: "/speaker-placeholder.svg",
+    heroImageUrl:
+      "https://mosheedri.co.il/wp-content/uploads/2026/06/moshe_with_shapes.png",
     eventDateHebrew: 'שלישי, כ"ט בתמוז · 14.7.26',
     eventDateIso: "2026-07-14T21:00:00+03:00",
     eventTimeDisplay: "21:00",
