@@ -116,7 +116,7 @@ export default function RegistrationForm({
           <rect x="3" y="6" width="13" height="12" rx="2" />
           <path d="M16 10.5 21 8v8l-5-2.5" />
         </svg>
-        לצפייה לזמן מוגבל בלבד
+        שידור חי · מספר המקומות מוגבל
       </div>
 
       <div className="p-6">
