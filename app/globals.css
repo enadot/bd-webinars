@@ -40,6 +40,9 @@
   --color-brand-accent: var(--brand-primary, #9fe870);
 
   --font-sans: "Google Sans", var(--font-heebo), system-ui, sans-serif;
+  /* Display faces: Brutalist = hero voice, Modernist = section headings */
+  --font-display: var(--font-brutalist), var(--font-heebo), system-ui, sans-serif;
+  --font-heading: var(--font-modernist), var(--font-heebo), system-ui, sans-serif;
 
   --radius-brand: 24px;
 }

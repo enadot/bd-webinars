@@ -17,7 +17,7 @@ export default function FinalCta({ config }: { config: WebinarConfig }) {
       />
       <div className="relative mx-auto max-w-3xl px-5 sm:px-8">
         <Reveal>
-          <h2 id="final-cta-title" className="text-3xl font-extrabold leading-snug sm:text-4xl">
+          <h2 id="final-cta-title" className="font-display text-4xl leading-tight sm:text-6xl">
             {config.content.finalCtaHeadline}
           </h2>
           <div className="gold-line mx-auto mt-5 h-0.5 w-24" aria-hidden="true" />

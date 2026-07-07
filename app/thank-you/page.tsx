@@ -40,7 +40,7 @@ export default async function ThankYouPage() {
             <path d="m5 13 4 4L19 7" />
           </svg>
         </div>
-        <h1 className="text-3xl font-extrabold sm:text-4xl">{thankYou.headline}</h1>
+        <h1 className="font-display text-5xl sm:text-6xl">{thankYou.headline}</h1>
         <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-white/85">
           {thankYou.body}
         </p>

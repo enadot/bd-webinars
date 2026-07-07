@@ -26,10 +26,10 @@ export default function Hero({
           <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-sm font-bold text-ink-deep">
             וובינר חי · ללא עלות
           </p>
-          <h1 className="text-4xl font-black leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="font-display text-6xl leading-[0.95] tracking-tight text-ink sm:text-7xl lg:text-[7rem]">
             {general.title}
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg font-semibold leading-snug text-body sm:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl font-heading text-2xl leading-snug text-ink sm:text-3xl">
             {general.subtitle}
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">

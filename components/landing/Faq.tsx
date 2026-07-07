@@ -21,7 +21,7 @@ export default function Faq({ config }: { config: WebinarConfig }) {
                 className="overflow-hidden rounded-2xl border border-brand-primary/10 bg-brand-paper transition-colors data-[open]:border-brand-accent/50"
               >
                 <Accordion.Header>
-                  <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 px-5 py-4 text-start text-lg font-bold text-brand-primary focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-accent">
+                  <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 px-5 py-5 text-start font-heading text-xl text-brand-primary focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-accent sm:text-2xl">
                     {item.q}
                     <svg
                       viewBox="0 0 24 24"

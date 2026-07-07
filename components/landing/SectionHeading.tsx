@@ -13,7 +13,7 @@ export default function SectionHeading({
     <div className="mx-auto mb-10 max-w-2xl text-center">
       <h2
         id={id}
-        className={`text-3xl font-extrabold sm:text-4xl ${light ? "text-white" : "text-brand-primary"}`}
+        className={`font-heading text-4xl sm:text-5xl lg:text-6xl ${light ? "text-white" : "text-brand-primary"}`}
       >
         {title}
       </h2>

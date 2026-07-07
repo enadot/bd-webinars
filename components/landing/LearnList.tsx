@@ -20,7 +20,7 @@ export default function LearnList({ config }: { config: WebinarConfig }) {
                 >
                   {i + 1}
                 </span>
-                <p className="text-lg font-semibold text-brand-ink/90">{item}</p>
+                <p className="text-xl font-semibold text-brand-ink/90 sm:text-2xl">{item}</p>
               </li>
             </Reveal>
           ))}

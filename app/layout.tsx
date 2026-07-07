@@ -1,15 +1,31 @@
 import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
+import localFont from "next/font/local";
 import { getCachedConfig } from "@/lib/cached-config";
 import TrackingScripts from "@/components/TrackingScripts";
 import "./globals.css";
 
-// Heebo carries Hebrew glyphs (Google Sans is Latin-only); it's the fallback
-// face in the stack so Hebrew renders in a proper heavy sans at weight 900.
+// Heebo carries Hebrew body text (Google Sans is Latin-only).
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
   display: "swap",
   variable: "--font-heebo",
+});
+
+// Tel Aviv Brutalist — the hero display voice (chunky, brand moment).
+const telAvivBrutalist = localFont({
+  src: "./fonts/telaviv-brutalist-bold.woff2",
+  weight: "700",
+  display: "swap",
+  variable: "--font-brutalist",
+});
+
+// Tel Aviv Modernist — section headings.
+const telAvivModernist = localFont({
+  src: "./fonts/telaviv-modernist-bold.woff2",
+  weight: "700",
+  display: "swap",
+  variable: "--font-modernist",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,7 +44,11 @@ export default async function RootLayout({
   const config = await getCachedConfig();
   const { primaryColor, secondaryColor, accentColor } = config.design;
   return (
-    <html lang="he" dir="rtl" className={heebo.variable}>
+    <html
+      lang="he"
+      dir="rtl"
+      className={`${heebo.variable} ${telAvivBrutalist.variable} ${telAvivModernist.variable}`}
+    >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

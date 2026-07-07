@@ -27,7 +27,7 @@ export default async function LandingPage() {
       {/* Slim nav */}
       <nav className="sticky top-0 z-20 border-b border-ink/5 bg-canvas/90 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3 sm:px-8">
-          <span className="text-lg font-black tracking-tight text-ink">
+          <span className="font-display text-xl tracking-tight text-ink">
             {config.general.title}
           </span>
           <a
