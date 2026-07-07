@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: var(--brand-primary, #0b3b66);
+  --color-brand-secondary: var(--brand-secondary, #123c69);
+  --color-brand-accent: var(--brand-accent, #d4af37);
+  --color-brand-deep: #072a4a;
+  --color-brand-ink: #0d2438;
+  --color-brand-paper: #f7f9fc;
+  --font-sans: var(--font-heebo), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-paper);
+  color: var(--color-brand-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll-reveal animation (driven by Reveal.tsx via IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gold shimmer divider */
+.gold-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-brand-accent),
+    transparent
+  );
+}
+
+/* Premium card hover */
+.premium-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -18px rgba(11, 59, 102, 0.35);
+}
+
+/* FAQ accordion marker */
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+details.faq-item summary .faq-icon {
+  transition: transform 0.25s ease;
+}
+
+details.faq-item[open] summary .faq-icon {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .premium-card {
+    transition: none;
+  }
+}

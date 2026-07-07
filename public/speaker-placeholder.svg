@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" role="img" aria-label="תמונת מרצה">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#123C69"/>
+      <stop offset="1" stop-color="#072A4A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="560" fill="url(#bg)"/>
+  <circle cx="240" cy="210" r="150" fill="#0B3B66" opacity="0.55"/>
+  <circle cx="240" cy="196" r="74" fill="#E8EEF5" opacity="0.92"/>
+  <path d="M240 292c-86 0-140 52-152 128-2 14 8 26 22 26h260c14 0 24-12 22-26-12-76-66-128-152-128z" fill="#E8EEF5" opacity="0.92"/>
+  <rect x="90" y="500" width="300" height="3" fill="url(#gold)"/>
+</svg>
