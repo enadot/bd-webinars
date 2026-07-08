@@ -6,6 +6,7 @@ import { getConfig, isDuplicateEmail, leadCount, saveLead } from "@/lib/store";
 import { registrationSchema, type Lead } from "@/lib/leads";
 import { forwardLead } from "@/lib/webhook";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { addToAudience, sendConfirmationEmail } from "@/lib/email";
 
 export const runtime = "nodejs";
 
@@ -81,13 +82,20 @@ export async function POST(req: NextRequest) {
     webhook_delivered: false,
   };
 
-  // Forward first so delivery status is stored with the lead; a webhook
-  // failure never fails the registration.
-  const webhookResult = await forwardLead(config, lead);
+  // Deliver side effects before storing so their statuses persist with the
+  // lead; none of them can fail the registration.
+  const [webhookResult, emailResult] = await Promise.all([
+    forwardLead(config, lead),
+    sendConfirmationEmail(config, lead.email, lead.full_name),
+  ]);
   lead.webhook_delivered = webhookResult.delivered;
   if (webhookResult.status !== undefined) {
     lead.webhook_status = webhookResult.status;
   }
+  lead.email_sent = emailResult.sent;
+
+  // Fire-and-forget style but awaited (serverless): audience membership.
+  await addToAudience(config, lead);
 
   try {
     await saveLead(lead);

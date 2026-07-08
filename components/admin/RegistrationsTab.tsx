@@ -70,6 +70,7 @@ export default function RegistrationsTab() {
                 <th className="px-4 py-3 text-start font-bold text-brand-primary">אימייל</th>
                 <th className="px-4 py-3 text-start font-bold text-brand-primary">מועד</th>
                 <th className="px-4 py-3 text-start font-bold text-brand-primary">מקור</th>
+                <th className="px-4 py-3 text-start font-bold text-brand-primary">מייל</th>
                 <th className="px-4 py-3 text-start font-bold text-brand-primary">Webhook</th>
               </tr>
             </thead>
@@ -86,6 +87,13 @@ export default function RegistrationsTab() {
                     })}
                   </td>
                   <td className="px-4 py-2.5">{lead.utm_source || "—"}</td>
+                  <td className="px-4 py-2.5">
+                    {lead.email_sent ? (
+                      <span className="font-semibold text-emerald-700">נשלח</span>
+                    ) : (
+                      <span className="text-brand-ink/50">—</span>
+                    )}
+                  </td>
                   <td className="px-4 py-2.5">
                     {lead.webhook_delivered ? (
                       <span className="font-semibold text-emerald-700">נמסר</span>

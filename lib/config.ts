@@ -48,6 +48,17 @@ export const webinarConfigSchema = z.object({
     doubleOptIn: z.boolean(),
     microcopy: z.array(z.string()),
   }),
+  email: z.object({
+    enabled: z.boolean(),
+    fromName: z.string(),
+    fromEmail: z.string(),
+    replyTo: z.string(),
+    subject: z.string(),
+    body: z.string(),
+    includeCalendarLinks: z.boolean(),
+    includeZoomLink: z.boolean(),
+    audienceName: z.string(),
+  }),
   tracking: z.object({
     facebookPixelId: z.string(),
     gtmId: z.string(),
@@ -142,6 +153,18 @@ export const DEFAULT_CONFIG: WebinarConfig = {
       "מספר המקומות מוגבל",
       "הקישור יישלח מיד לאחר ההרשמה",
     ],
+  },
+  email: {
+    enabled: true,
+    fromName: "משה אדרי",
+    // Works out of the box; replace with an address on a verified Resend domain.
+    fromEmail: "onboarding@resend.dev",
+    replyTo: "",
+    subject: "נרשמתם בהצלחה ל{{title}} 🎉",
+    body: "היי {{name}},\n\nאיזה כיף שנרשמתם! המקום שלכם ב{{title}} שמור.\n\nניפגש ב{{date}} בשעה {{time}}, {{location}}.\n\nכדאי להוסיף את האירוע ליומן כבר עכשיו כדי לא לפספס — הקישורים מחכים למטה.\n\nנתראה בשידור,\nמשה אדרי",
+    includeCalendarLinks: true,
+    includeZoomLink: false,
+    audienceName: "נרשמי וובינר המיליון",
   },
   tracking: {
     facebookPixelId: "",

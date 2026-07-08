@@ -6,6 +6,7 @@ import { Tabs } from "@base-ui/react/tabs";
 import type { WebinarConfig } from "@/lib/config";
 import GeneralTab from "./GeneralTab";
 import FormTab from "./FormTab";
+import EmailTab from "./EmailTab";
 import TrackingTab from "./TrackingTab";
 import ThankYouTab from "./ThankYouTab";
 import DesignTab from "./DesignTab";
@@ -14,6 +15,7 @@ import RegistrationsTab from "./RegistrationsTab";
 const TABS = [
   { value: "general", label: "כללי" },
   { value: "form", label: "טופס ו-Webhook" },
+  { value: "email", label: "מייל אישור" },
   { value: "tracking", label: "מעקב ופיקסלים" },
   { value: "thankYou", label: "עמוד תודה" },
   { value: "design", label: "עיצוב" },
@@ -153,6 +155,9 @@ export default function AdminPanel() {
           </Tabs.Panel>
           <Tabs.Panel value="form" className="pt-6">
             <FormTab config={config} update={update} />
+          </Tabs.Panel>
+          <Tabs.Panel value="email" className="pt-6">
+            <EmailTab config={config} update={update} />
           </Tabs.Panel>
           <Tabs.Panel value="tracking" className="pt-6">
             <TrackingTab config={config} update={update} />

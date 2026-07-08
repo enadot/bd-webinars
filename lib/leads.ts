@@ -24,6 +24,7 @@ export interface Lead {
   double_opt_in: boolean;
   webhook_delivered: boolean;
   webhook_status?: number;
+  email_sent?: boolean;
 }
 
 /** Normalize an Israeli phone number to local 0-prefixed digits. */

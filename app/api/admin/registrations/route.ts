@@ -24,6 +24,7 @@ const CSV_COLUMNS: Array<{ header: string; get: (lead: Lead) => string }> = [
   { header: "IP", get: (l) => l.ip },
   { header: "user_agent", get: (l) => l.user_agent },
   { header: "webhook נמסר", get: (l) => (l.webhook_delivered ? "כן" : "לא") },
+  { header: "מייל אישור נשלח", get: (l) => (l.email_sent ? "כן" : "לא") },
 ];
 
 function csvEscape(value: string): string {
